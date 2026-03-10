@@ -1,11 +1,11 @@
 import SwiftUI
 
 struct LetterBoxView: View {
-    @Binding var letter: String
+    @Binding var letter: Character?
     let result: GuessResult?
 
     var body: some View {
-        TextField("?", text: $letter)
+        TextField("?", text: textBinding)
             .textFieldStyle(.plain)
             .multilineTextAlignment(.center)
             .font(.system(size: 28, weight: .bold, design: .rounded))
@@ -16,9 +16,13 @@ struct LetterBoxView: View {
                     .fill(backgroundColor)
                     .animation(.easeInOut(duration: 0.3), value: result)
             )
-            .onChange(of: letter) { _, newValue in
-                letter = String(newValue.filter(\.isLetter).prefix(1)).uppercased()
-            }
+    }
+
+    private var textBinding: Binding<String> {
+        Binding(
+            get: { letter.map(String.init) ?? "" },
+            set: { letter = $0.uppercased().filter(\.isLetter).first }
+        )
     }
 
     private var backgroundColor: Color {
@@ -32,21 +36,21 @@ struct LetterBoxView: View {
 }
 
 #Preview("Empty") {
-    @Previewable @State var letter = ""
+    @Previewable @State var letter: Character? = nil
     LetterBoxView(letter: $letter, result: nil)
 }
 
 #Preview("Correct") {
-    @Previewable @State var letter = "A"
+    @Previewable @State var letter: Character? = "A"
     LetterBoxView(letter: $letter, result: .correct)
 }
 
 #Preview("Misplaced") {
-    @Previewable @State var letter = "B"
+    @Previewable @State var letter: Character? = "B"
     LetterBoxView(letter: $letter, result: .misplaced)
 }
 
 #Preview("Wrong") {
-    @Previewable @State var letter = "C"
+    @Previewable @State var letter: Character? = "C"
     LetterBoxView(letter: $letter, result: .wrong)
 }
