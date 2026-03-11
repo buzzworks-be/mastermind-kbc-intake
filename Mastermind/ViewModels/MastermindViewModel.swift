@@ -4,7 +4,7 @@ import Observation
 final class MastermindViewModel {
     var slots: [GuessSlot] = Array(repeating: GuessSlot(), count: 4)
 
-    var secret: [Character] = []
+    let secret: [Character]
     private let gameLogicService: GameLogicServiceProtocol
 
     init(gameLogicService: GameLogicServiceProtocol = GameLogicService()) {
