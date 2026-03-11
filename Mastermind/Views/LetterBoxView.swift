@@ -1,9 +1,13 @@
 import SwiftUI
 
 struct LetterBoxView: View {
-    @Binding var slot: GuessSlot
+    @Binding private var slot: GuessSlot
     @State private var text = ""
 
+    init(slot: Binding<GuessSlot>) {
+        self._slot = slot
+    }
+    
     var body: some View {
         TextField("?", text: $text)
             .textFieldStyle(.plain)

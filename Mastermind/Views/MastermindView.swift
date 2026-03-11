@@ -14,7 +14,7 @@ struct MastermindView: View {
                 .font(.largeTitle.bold())
 
             HStack(spacing: 12) {
-                ForEach(0..<4, id: \.self) { index in
+                ForEach(vm.slots.indices, id: \.self) { index in
                     LetterBoxView(slot: $vm.slots[index])
                 }
             }
