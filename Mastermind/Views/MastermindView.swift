@@ -9,13 +9,13 @@ struct MastermindView: View {
         VStack(spacing: 40) {
             Text("Mastermind")
                 .font(.largeTitle.bold())
+            
+            Text(String(viewModel.secret))
+                .font(.largeTitle.bold())
 
             HStack(spacing: 12) {
                 ForEach(0..<4, id: \.self) { index in
-                    LetterBoxView(
-                        letter: $vm.slots[index].letter,
-                        result: viewModel.slots[index].result
-                    )
+                    LetterBoxView(slot: $vm.slots[index])
                 }
             }
 

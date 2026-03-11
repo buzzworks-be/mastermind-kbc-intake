@@ -6,6 +6,10 @@ struct GameLogicService: GameLogicServiceProtocol {
     }
 
     func evaluate(guess: [Character], against secret: [Character]) -> [GuessResult] {
-        return [.correct]
+        zip(guess, secret).map { guessChar, secretChar in
+            if guessChar == secretChar    { return .correct }
+            if secret.contains(guessChar) { return .misplaced }
+            return .wrong
+        }
     }
 }

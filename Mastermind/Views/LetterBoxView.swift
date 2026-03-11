@@ -1,11 +1,11 @@
 import SwiftUI
 
 struct LetterBoxView: View {
-    @Binding var letter: Character?
-    let result: GuessResult?
+    @Binding var slot: GuessSlot
+    @State private var text = ""
 
     var body: some View {
-        TextField("?", text: textBinding)
+        TextField("?", text: $text)
             .textFieldStyle(.plain)
             .multilineTextAlignment(.center)
             .font(.system(size: 28, weight: .bold, design: .rounded))
@@ -14,43 +14,40 @@ struct LetterBoxView: View {
             .background(
                 RoundedRectangle(cornerRadius: 12)
                     .fill(backgroundColor)
-                    .animation(.easeInOut(duration: 0.3), value: result)
+                    .animation(.easeInOut(duration: 0.3), value: slot.result)
             )
-    }
-
-    private var textBinding: Binding<String> {
-        Binding(
-            get: { letter.map(String.init) ?? "" },
-            set: { letter = $0.uppercased().filter(\.isLetter).first }
-        )
+            .onChange(of: text) { _, newValue in
+                let filtered = String(newValue.uppercased().filter(\.isLetter).prefix(1))
+                text = filtered
+                slot.letter = filtered.first
+            }
     }
 
     private var backgroundColor: Color {
-        guard let result else { return Color.secondary.opacity(0.15) }
-        return result.color
+        return slot.result?.color ?? Color.secondary.opacity(0.15)
     }
 
     private var textColor: Color {
-        result == nil ? .primary : .white
+        slot.result == nil ? .primary : .white
     }
 }
 
 #Preview("Empty") {
-    @Previewable @State var letter: Character? = nil
-    LetterBoxView(letter: $letter, result: nil)
+    @Previewable @State var slot = GuessSlot()
+    LetterBoxView(slot: $slot)
 }
 
 #Preview("Correct") {
-    @Previewable @State var letter: Character? = "A"
-    LetterBoxView(letter: $letter, result: .correct)
+    @Previewable @State var slot = GuessSlot(letter: "A", result: .correct)
+    LetterBoxView(slot: $slot)
 }
 
 #Preview("Misplaced") {
-    @Previewable @State var letter: Character? = "B"
-    LetterBoxView(letter: $letter, result: .misplaced)
+    @Previewable @State var slot = GuessSlot(letter: "B", result: .misplaced)
+    LetterBoxView(slot: $slot)
 }
 
 #Preview("Wrong") {
-    @Previewable @State var letter: Character? = "C"
-    LetterBoxView(letter: $letter, result: .wrong)
+    @Previewable @State var slot = GuessSlot(letter: "C", result: .wrong)
+    LetterBoxView(slot: $slot)
 }
