@@ -6,10 +6,10 @@ struct MastermindView: View {
     var body: some View {
         @Bindable var vm = viewModel
         
-        VStack(spacing: 40) {
+        VStack(spacing: 20) {
             Text("Mastermind")
                 .font(.largeTitle.bold())
-            
+
             Text(String(viewModel.secret))
                 .font(.largeTitle.bold())
 
@@ -19,6 +19,8 @@ struct MastermindView: View {
                 }
             }
 
+            TimerView(timeRemaining: viewModel.timeRemaining, total: 60)
+
             Button("Check") {
                 viewModel.checkGuess()
             }
@@ -27,6 +29,9 @@ struct MastermindView: View {
             .disabled(!viewModel.isCheckEnabled)
         }
         .padding()
+        .onAppear {
+            viewModel.startTimer()
+        }
     }
 }
 
