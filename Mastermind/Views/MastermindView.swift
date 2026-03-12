@@ -19,7 +19,7 @@ struct MastermindView: View {
                 }
             }
 
-            TimerView(timeRemaining: viewModel.timeRemaining, total: 60)
+            TimerView(timeRemaining: viewModel.timeRemaining, total: viewModel.totalDuration)
 
             Button("Check") {
                 viewModel.checkGuess()
@@ -31,6 +31,11 @@ struct MastermindView: View {
         .padding()
         .onAppear {
             viewModel.startTimer()
+        }
+        .sheet(isPresented: $vm.isSuccessPresented) {
+            SuccessView {
+                viewModel.resetGame()
+            }
         }
         .sheet(isPresented: $vm.isGameOverPresented) {
             GameOverView {

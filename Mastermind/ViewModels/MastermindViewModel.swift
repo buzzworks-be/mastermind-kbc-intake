@@ -11,7 +11,10 @@ final class MastermindViewModel {
     private(set) var secret: [Character]
     
     var isGameOverPresented = false
+    var isSuccessPresented = false
     var slots: [GuessSlot] = Array(repeating: GuessSlot(), count: 4)
+
+    var totalDuration: Double { duration }
 
     init(gameLogicService: GameLogicServiceProtocol = GameLogicService()) {
         self.gameLogicService = gameLogicService
@@ -31,12 +34,17 @@ final class MastermindViewModel {
     }
 
     func checkGuess() {
+        let currentGuess = slots.compactMap { $0.letter }
         let results = gameLogicService.evaluate(
-            guess: slots.compactMap { $0.letter },
+            guess: currentGuess,
             against: secret
         )
         for (index, result) in zip(slots.indices, results) {
             slots[index].result = result
+        }
+
+        if currentGuess == secret {
+            presentSuccess()
         }
     }
 
@@ -46,6 +54,7 @@ final class MastermindViewModel {
         secret = gameLogicService.generateSecret(length: 4)
         timeRemaining = duration
         isGameOverPresented = false
+        isSuccessPresented = false
         startTimer()
     }
 
@@ -61,5 +70,12 @@ final class MastermindViewModel {
         timer?.invalidate()
         timer = nil
         isGameOverPresented = true
+    }
+
+    private func presentSuccess() {
+        guard !isSuccessPresented else { return }
+        timer?.invalidate()
+        timer = nil
+        isSuccessPresented = true
     }
 }
