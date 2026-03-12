@@ -5,6 +5,7 @@ struct MastermindViewModelTests {
 
     // MARK: - isCheckEnabled
 
+    @MainActor
     struct IsCheckEnabled {
         let vm = MastermindViewModel(gameLogicService: MockGameLogicService(
             secret: ["A", "B", "C", "D"],
@@ -32,6 +33,7 @@ struct MastermindViewModelTests {
 
     // MARK: - checkGuess
 
+    @MainActor
     struct CheckGuess {
         let vm = MastermindViewModel(gameLogicService: MockGameLogicService(
             secret: ["A", "B", "C", "D"],
@@ -66,6 +68,7 @@ struct MastermindViewModelTests {
 
     // MARK: - resetGame
 
+    @MainActor
     struct ResetGame {
         let vm = MastermindViewModel(gameLogicService: MockGameLogicService(
             secret: ["A", "B", "C", "D"],

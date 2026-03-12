@@ -12,4 +12,11 @@ enum GuessResult: Equatable {
         case .wrong:     return .red
         }
     }
+
+    nonisolated static func == (lhs: GuessResult, rhs: GuessResult) -> Bool {
+        switch (lhs, rhs) {
+        case (.correct, .correct), (.misplaced, .misplaced), (.wrong, .wrong): return true
+        default: return false
+        }
+    }
 }
