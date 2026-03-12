@@ -32,6 +32,11 @@ struct MastermindView: View {
         .onAppear {
             viewModel.startTimer()
         }
+        .sheet(isPresented: $vm.isGameOverPresented) {
+            GameOverView {
+                viewModel.resetGame()
+            }
+        }
     }
 }
 
