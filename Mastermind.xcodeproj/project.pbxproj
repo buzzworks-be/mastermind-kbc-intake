@@ -6,8 +6,19 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXContainerItemProxy section */
+		95AD0E452F62E595008BC9B2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 95AD0D812F602FCA008BC9B2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 95AD0D882F602FCA008BC9B2;
+			remoteInfo = Mastermind;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		95AD0D892F602FCA008BC9B2 /* Mastermind.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mastermind.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		95AD0E412F62E595008BC9B2 /* MastermindTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MastermindTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -16,10 +27,22 @@
 			path = Mastermind;
 			sourceTree = "<group>";
 		};
+		95AD0E422F62E595008BC9B2 /* MastermindTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = MastermindTests;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		95AD0D862F602FCA008BC9B2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		95AD0E3E2F62E595008BC9B2 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -33,6 +56,7 @@
 			isa = PBXGroup;
 			children = (
 				95AD0D8B2F602FCA008BC9B2 /* Mastermind */,
+				95AD0E422F62E595008BC9B2 /* MastermindTests */,
 				95AD0D8A2F602FCA008BC9B2 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -41,6 +65,7 @@
 			isa = PBXGroup;
 			children = (
 				95AD0D892F602FCA008BC9B2 /* Mastermind.app */,
+				95AD0E412F62E595008BC9B2 /* MastermindTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -70,6 +95,29 @@
 			productReference = 95AD0D892F602FCA008BC9B2 /* Mastermind.app */;
 			productType = "com.apple.product-type.application";
 		};
+		95AD0E402F62E595008BC9B2 /* MastermindTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 95AD0E472F62E595008BC9B2 /* Build configuration list for PBXNativeTarget "MastermindTests" */;
+			buildPhases = (
+				95AD0E3D2F62E595008BC9B2 /* Sources */,
+				95AD0E3E2F62E595008BC9B2 /* Frameworks */,
+				95AD0E3F2F62E595008BC9B2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				95AD0E462F62E595008BC9B2 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				95AD0E422F62E595008BC9B2 /* MastermindTests */,
+			);
+			name = MastermindTests;
+			packageProductDependencies = (
+			);
+			productName = MastermindTests;
+			productReference = 95AD0E412F62E595008BC9B2 /* MastermindTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -82,6 +130,10 @@
 				TargetAttributes = {
 					95AD0D882F602FCA008BC9B2 = {
 						CreatedOnToolsVersion = 26.1;
+					};
+					95AD0E402F62E595008BC9B2 = {
+						CreatedOnToolsVersion = 26.1;
+						TestTargetID = 95AD0D882F602FCA008BC9B2;
 					};
 				};
 			};
@@ -100,12 +152,20 @@
 			projectRoot = "";
 			targets = (
 				95AD0D882F602FCA008BC9B2 /* Mastermind */,
+				95AD0E402F62E595008BC9B2 /* MastermindTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		95AD0D872F602FCA008BC9B2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		95AD0E3F2F62E595008BC9B2 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -122,7 +182,26 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		95AD0E3D2F62E595008BC9B2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		95AD0E462F62E595008BC9B2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			platformFilters = (
+				ios,
+				macos,
+			);
+			target = 95AD0D882F602FCA008BC9B2 /* Mastermind */;
+			targetProxy = 95AD0E452F62E595008BC9B2 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		95AD0D922F602FCC008BC9B2 /* Debug */ = {
@@ -323,6 +402,63 @@
 			};
 			name = Release;
 		};
+		95AD0E482F62E595008BC9B2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = be.dennislitjens.MastermindTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				SDKROOT = xros;
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Mastermind.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Mastermind";
+				XROS_DEPLOYMENT_TARGET = 26.1;
+			};
+			name = Debug;
+		};
+		95AD0E492F62E595008BC9B2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = be.dennislitjens.MastermindTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				SDKROOT = xros;
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Mastermind.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Mastermind";
+				VALIDATE_PRODUCT = YES;
+				XROS_DEPLOYMENT_TARGET = 26.1;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -340,6 +476,15 @@
 			buildConfigurations = (
 				95AD0D952F602FCC008BC9B2 /* Debug */,
 				95AD0D962F602FCC008BC9B2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		95AD0E472F62E595008BC9B2 /* Build configuration list for PBXNativeTarget "MastermindTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				95AD0E482F62E595008BC9B2 /* Debug */,
+				95AD0E492F62E595008BC9B2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
